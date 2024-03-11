@@ -1,15 +1,44 @@
-function buy(name, price) {
-let promptClg = Number(prompt(`How many ${name} do you want?`));
-let total = price * promptClg;
-let result = total.toFixed(2)
-let cardContent = document.getElementById('carrito');
-cardContent.innerHTML += `${name} ${price} x ${promptClg} = ${result}€/Kg<br>`
+/* let totalPrice = 0;
+let productDetails = [];
+function buy(name, price, unit) {
+  const product = new Object();
+  product.id = new Date().getTime();
+  product.description = `${name}`;
+  productDetails.push(product);
 
+  for (let i = 0; i < productDetails.length; i++) {
+        console.log(
+      "productId:",
+      productDetails[i].id,
+      productDetails[i].description
+    );
+  }
 
-let totalCart = document.getElementById('preuFinal');
-totalCart.innerHTML = result + result;
-console.log(totalCart)
-};
+  let promptClg = Number(prompt(`How many ${name} do you want?`)); //PROMPT FOR CUSTOMER INTRODUCE THE AMOUNT THEY WANT
+  let total = price * promptClg; // STORING IN A VARIABLE THE AMOUNT FROM CUSTOMER * PRICE
+  let result = total.toFixed(2); // USING FIXED(2) >>> ,00
+
+  totalPrice += total;
+
+  let cardContent = document.getElementById("carrito");
+  let elementId = productDetails.id;
+  cardContent.innerHTML += `<span id="${elementId}">`;
+  cardContent.innerHTML += `<i class="fa-solid fa-trash-can" id="borrar" onclick="remove('${elementId}')"></i>${name} ${price} x ${promptClg}${unit} = ${result}€${unit}`;
+  cardContent.innerHTML += `</span>`;
+  let totalCart = document.getElementById("preuFinal");
+  totalCart.innerHTML = totalPrice.toFixed(2);
+  //console.log(totalCart)
+
+  ///function to delete
+  function remove(elementId) {
+    let productId = document.getElementById(elementId);
+    if (productId) {
+      productId.remove();
+    } else {
+      console.log("Element not found:", elementId);
+    }
+  }
+} */
 
 /* 
 const newFruits = []; // here i have a array with all the names and price
@@ -91,3 +120,44 @@ Recuerda la importancia comentar con detalle el código.
 
  Lo importante es el cálculo, no los estilos css
  */
+
+
+
+ let totalPrice = 0;
+let productDetails = [];
+
+function buy(name, price, unit) {
+  const product = new Object();
+  product.id = new Date().getTime();
+  product.description = `${name}`;
+  productDetails.push(product);
+    console.log(product.id)
+  for (let i = 0; i < productDetails.length; i++) {
+    // console.log("productId:", productDetails[i].id, productDetails[i].description);
+  }
+
+  let promptClg = Number(prompt(`How many ${name} do you want?`)); //PROMPT FOR CUSTOMER INTRODUCE THE AMOUNT THEY WANT
+  let total = price * promptClg; // STORING IN A VARIABLE THE AMOUNT FROM CUSTOMER * PRICE
+  let result = total.toFixed(2); // USING FIXED(2) >>> ,00
+
+  totalPrice += total;
+
+  let cardContent = document.getElementById("carrito");
+  let elementId = product.id;
+  cardContent.innerHTML += `<span id="${elementId}">`;
+  cardContent.innerHTML += `<i class="fa-solid fa-trash-can" id="borrar" onclick="remove('${elementId}')"></i>${name} ${price} x ${promptClg}${unit} = ${result}€${unit}`;
+  cardContent.innerHTML += `</span>`;
+  let totalCart = document.getElementById("preuFinal");
+  totalCart.innerHTML = totalPrice.toFixed(2);
+  console.log(elementId)
+}
+
+///function to delete
+function remove(elementId) {
+  let productId = document.getElementById(elementId);
+  if (productId === elementId) {
+    productId.remove();
+  } else {
+    console.log("Element not found:", elementId);
+  }
+}
