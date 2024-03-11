@@ -17,22 +17,24 @@ function buy(name, price, unit) {
   totalPrice += total;
 
   let cardContent = document.getElementById("carrito");
-  let elementId = productDetails.id;
+  let elementId = product.id;
+  console.log(elementId)
   cardContent.innerHTML += `<span id="${elementId}">`;
-  cardContent.innerHTML += `<i class="fa-solid fa-trash-can" id="borrar" onclick="remove('${elementId}')"></i>${name} ${price} x ${promptClg}${unit} = ${result}€${unit}`;
+  cardContent.innerHTML += `<i class="fa-solid fa-trash-can" id="borrar" onclick="removeEl('${elementId}')"></i>${name} ${price} x ${promptClg}${unit} = ${result}€${unit}`;
   cardContent.innerHTML += `</span>`;
   let totalCart = document.getElementById("preuFinal");
   totalCart.innerHTML = totalPrice.toFixed(2);
   //console.log(totalCart)
 
-  ///function to delete
-  function remove(elementId) {
-    let productId = document.getElementById(elementId);
-    if (productId) {
-      productId.remove();
-    } else {
-      console.log("Element not found:", elementId);
-    }
+}
+///function to delete
+function removeEl(elementId) {
+  let productId = document.getElementById(elementId);
+  if (productId) {
+    console.log("test")
+    productId.remove();
+  } else {
+    console.log("Element not found:", elementId);
   }
 }
 
